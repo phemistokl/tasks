@@ -82,6 +82,26 @@ const TasksActions = {
         });
     },
 
+    deleteTask(params) {
+        api.updateTask({
+            taskListId: params.taskListId,
+            taskId: params.taskId
+        })
+        .then(data => {
+            AppDispatcher.dispatch({
+                type   : AppConstants.TASK_DELETE_SUCCESS,
+                task   : data,
+                taskId : params.taskId
+            });
+        })
+        .catch(err => {
+            AppDispatcher.dispatch({
+                type  : AppConstants.TASK_DELETE_FAIL,
+                error : err
+            });
+        });
+    },
+
 };
 
 export default TasksActions;

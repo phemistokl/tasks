@@ -62,6 +62,14 @@ AppDispatcher.register(function(action) {
             break;
         }
 
+        case AppConstants.TASK_DELETE_SUCCESS: {
+            const deletedTaskIndex = _tasks.findIndex(task => task.id === action.taskId);
+            _tasks.splice(deletedTaskIndex, 1);
+
+            TasksStore.emitChange();
+            break;
+        }
+
         case AppConstants.TASK_CREATE_SUCCESS: {
             const newTask = formatTask(action.task);
             _tasks.unshift(newTask);
