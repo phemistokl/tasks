@@ -81,6 +81,7 @@ const Task = React.createClass({
                         <div>
                             <RaisedButton primary onClick={this.handleSave} label='Save' />
                             <FlatButton onClick={this.handleCancel} label='Cancel' />
+                            <FlatButton onClick={this.props.onDelete} label='Delete' />
                         </div>
                     </div>
                 </div>
